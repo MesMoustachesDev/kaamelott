@@ -17,7 +17,7 @@ fun initAppInjector(mainApplication: MainApplication) {
     DaggerAppComponent
             .builder()
             .application(mainApplication)
-            .baseUrl("https://bigburger.useradgents.com/")
+            .baseUrl("https://kaamelott-soundboard.2ec0b4.fr/")
             .build()
             .inject(mainApplication)
     mainApplication

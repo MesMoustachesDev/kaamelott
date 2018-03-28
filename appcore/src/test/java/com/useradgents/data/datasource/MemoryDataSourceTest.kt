@@ -1,22 +1,22 @@
 package com.useradgents.data.datasource
 
-import com.useradgents.domain.model.Burger
+import com.useradgents.domain.model.Sound
 import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
 
 class MemoryDataSourceTest {
 
-    lateinit var repo: BurgerDataSource
+    lateinit var repo: SoundDataSource
 
-    private fun getRepoSize() = repo.query(BurgerSpecification.All()).size
-    private fun getBurgerWithId(id: String) = repo.query(BurgerSpecification.ByRef(id))
+    private fun getRepoSize() = repo.query(SoundSpecification.All()).size
+    private fun getBurgerWithId(id: String) = repo.query(SoundSpecification.ByRef(id))
 
-    private val testBurger = Burger(ref = "test", price = 1f)
+    private val testBurger = Sound(ref = "test", price = 1f)
 
     @Before
     fun setUp() {
-        repo = MemoryBurgersDataSource()
+        repo = MemorySoundDataSource()
     }
 
     @Test
@@ -41,7 +41,7 @@ class MemoryDataSourceTest {
 
         repo.add(testBurger)
         assertEquals(1f, testBurger.ref?.let { getBurgerWithId(it)[0].price })
-        val updatedBurger = Burger(ref = testBurger.ref)
+        val updatedBurger = Sound(ref = testBurger.ref)
         updatedBurger.price = 2f
         repo.update(updatedBurger)
         assertEquals(2f, testBurger.ref?.let { getBurgerWithId(it)[0].price })
@@ -63,7 +63,7 @@ class MemoryDataSourceTest {
 
         repo.add(testBurger)
         assertEquals(1, getRepoSize())
-        testBurger.ref?.let { BurgerSpecification.ByRef(it) }?.let { repo.remove(it) }
+        testBurger.ref?.let { SoundSpecification.ByRef(it) }?.let { repo.remove(it) }
         assertEquals(0, getRepoSize())
     }
 

@@ -1,7 +1,7 @@
 package com.useradgents.uaburger.di.module
 
-import com.useradgents.data.network.BurgerAPIService
-import com.useradgents.data.network.MockBurgerAPIService
+import com.useradgents.data.network.MockSoundAPIService
+import com.useradgents.data.network.SoundAPIService
 import com.useradgents.di.qualifier.Mocked
 import com.useradgents.uaburger.di.scope.PerApplication
 import dagger.Module
@@ -13,11 +13,11 @@ class ApiServicesModule {
 
     @Provides
     @PerApplication
-    fun provideBurgerApiService(retrofit: Retrofit): BurgerAPIService =
-            retrofit.create(BurgerAPIService::class.java)
+    fun provideSoundApiService(retrofit: Retrofit): SoundAPIService =
+            retrofit.create(SoundAPIService::class.java)
 
     @Provides
     @PerApplication
     @Mocked
-    fun provideMockBurgerService(service: MockBurgerAPIService): BurgerAPIService = service
+    fun provideMockSoundService(service: MockSoundAPIService): SoundAPIService = service
 }

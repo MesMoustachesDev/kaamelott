@@ -1,9 +1,9 @@
 package com.useradgents.data.repository
 
-import com.useradgents.data.datasource.BurgerDataSource
-import com.useradgents.domain.model.Burger
-import com.useradgents.data.datasource.BurgerSpecification
-import com.useradgents.data.datasource.MemoryBurgersDataSource
+import com.useradgents.data.datasource.SoundDataSource
+import com.useradgents.domain.model.Sound
+import com.useradgents.data.datasource.SoundSpecification
+import com.useradgents.data.datasource.MemorySoundDataSource
 import org.junit.After
 import org.junit.Assert.assertEquals
 import org.junit.Before
@@ -19,16 +19,16 @@ class CartRepositoryImplTest {
     val rule = MockitoJUnit.rule()
 
     @Mock
-    lateinit var repo: BurgerDataSource
+    lateinit var repo: SoundDataSource
 
     lateinit var cartRepository: CartRepository
 
-    val b1 = Burger(ref = "0", price = 100f)
-    val b2 = Burger(ref = "1", price = 1000f)
+    val b1 = Sound(ref = "0", price = 100f)
+    val b2 = Sound(ref = "1", price = 1000f)
 
     @Before
     fun setUp() {
-        repo = MemoryBurgersDataSource()
+        repo = MemorySoundDataSource()
 
         repo.add(b1)
         repo.add(b2)
@@ -38,7 +38,7 @@ class CartRepositoryImplTest {
 
     @After
     fun tearDown() {
-        repo.remove(BurgerSpecification.All())
+        repo.remove(SoundSpecification.All())
     }
 
     @Test

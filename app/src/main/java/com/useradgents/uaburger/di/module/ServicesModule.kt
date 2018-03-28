@@ -1,13 +1,11 @@
 package com.useradgents.uaburger.di.module
 
-import com.useradgents.data.datasource.BurgerDataSource
-import com.useradgents.data.repository.BurgerCacheStrategy
-import com.useradgents.data.repository.BurgerRepository
-import com.useradgents.data.repository.CartRepository
-import com.useradgents.data.datasource.MemoryBurgersDataSource
-import com.useradgents.data.repository.BurgerCacheStrategyImpl
-import com.useradgents.data.repository.BurgerRepositoryImpl
-import com.useradgents.data.repository.CartRepositoryImpl
+import com.useradgents.data.datasource.MemorySoundDataSource
+import com.useradgents.data.datasource.SoundDataSource
+import com.useradgents.data.repository.SoundCacheStrategy
+import com.useradgents.data.repository.SoundCacheStrategyImpl
+import com.useradgents.data.repository.SoundRepository
+import com.useradgents.data.repository.SoundRepositoryImpl
 import com.useradgents.uaburger.di.scope.PerApplication
 import dagger.Module
 import dagger.Provides
@@ -17,17 +15,13 @@ class ServicesModule {
 
     @Provides
     @PerApplication
-    fun provideBurgerRepository(repo: BurgerRepositoryImpl): BurgerRepository = repo
+    fun provideSoundRepository(repo: SoundRepositoryImpl): SoundRepository = repo
 
     @Provides
     @PerApplication
-    fun provideBurgerDataSource(ds: MemoryBurgersDataSource): BurgerDataSource = ds
+    fun provideSoundDataSource(ds: MemorySoundDataSource): SoundDataSource = ds
 
     @Provides
     @PerApplication
-    fun provideBurgerCacheStrategy(cacheStrategy: BurgerCacheStrategyImpl): BurgerCacheStrategy = cacheStrategy
-
-    @Provides
-    @PerApplication
-    fun provideCartRepository(repo: CartRepositoryImpl): CartRepository = repo
+    fun provideSoundCacheStrategy(cacheStrategy: SoundCacheStrategyImpl): SoundCacheStrategy = cacheStrategy
 }
